@@ -39,7 +39,10 @@ export async function getImageSrc(files: File[], mode: number = 1) {
   const destHeight = sourceHeight / 2;
   const destX = 0;
   const destY = 0;
-  ctx.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+  if (mode == 2) {
+    ctx.drawImage(img, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+  } else {
+    ctx.drawImage(img, destX, destY, destWidth, destHeight);
   return c.toDataURL('image/jpeg', 0.8);
 }
 
